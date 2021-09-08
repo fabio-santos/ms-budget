@@ -26,13 +26,13 @@ public class BudgetService {
     public Budget save(BudgetDTO budgetDTO) {
         Budget budget = new Budget(budgetDTO);
 
-        validateBudgetIsEnough(budget, budgetDTO.getSpentAmount());
+        validateBudgetIsEnough(budget);
 
         return repository.save(budget);
     }
 
-    private void validateBudgetIsEnough(Budget budget, Double value) {
-        if(budget.getTotalAmount() < value) {
+    private void validateBudgetIsEnough(Budget budget) {
+        if(budget.getTotalAmount() < budget.getSpentAmount()) {
             throw new RuntimeException("Budget is not enough");
         }
     }
@@ -44,9 +44,9 @@ public class BudgetService {
     public Budget saveExpense(ExpenseDTO expenseDTO, Long id) {
         Budget budget = repository.findById(id).orElseThrow(() -> new RuntimeException(id + " not available"));
 
-        validateBudgetIsEnough(budget, expenseDTO.getSpentAmount());
+        budget.addSpentAmount(expenseDTO.getAmount());
+        validateBudgetIsEnough(budget);
 
-        budget.setSpentAmount(expenseDTO.getSpentAmount());
         return repository.save(budget);
     }
 }

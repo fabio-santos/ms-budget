@@ -35,4 +35,8 @@ public class Budget {
         this.destination = dto.getDestination();
         this.origin = dto.getOrigin();
     }
+
+    public void addSpentAmount(double amount) {
+        this.spentAmount += amount;
+    }
 }

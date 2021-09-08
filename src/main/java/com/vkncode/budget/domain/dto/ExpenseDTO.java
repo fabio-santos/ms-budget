@@ -7,5 +7,5 @@ import javax.validation.constraints.Min;
 public class ExpenseDTO {
 
     @Min(1)
-    private double spentAmount;
+    private double amount;
 }
