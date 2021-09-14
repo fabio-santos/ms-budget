@@ -1,7 +1,7 @@
 package com.vkncode.budget.services;
 
 import com.vkncode.budget.domain.dto.BudgetDTO;
-import com.vkncode.budget.domain.services.BudgetService;
+import com.vkncode.budget.domain.service.BudgetService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

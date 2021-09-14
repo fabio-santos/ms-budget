@@ -3,7 +3,7 @@ package com.vkncode.budget.controller;
 import com.vkncode.budget.domain.dto.BudgetDTO;
 import com.vkncode.budget.domain.dto.ExpenseDTO;
 import com.vkncode.budget.domain.entity.Budget;
-import com.vkncode.budget.domain.services.BudgetService;
+import com.vkncode.budget.domain.service.BudgetService;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -1,13 +1,15 @@
-package com.vkncode.budget.domain.services;
+package com.vkncode.budget.domain.service;
 
 import com.vkncode.budget.domain.dto.BudgetDTO;
 import com.vkncode.budget.domain.dto.ExpenseDTO;
 import com.vkncode.budget.domain.entity.Budget;
+import com.vkncode.budget.domain.entity.Destination;
 import com.vkncode.budget.domain.repository.BudgetRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -17,6 +19,10 @@ public class BudgetService {
 
     public List<Budget> get() {
         return repository.findAll();
+    }
+
+    public Optional<Budget> findByDestination(Destination destination) {
+        return repository.findByDestination(destination);
     }
 
     public Budget findById(Long id) {
@@ -48,5 +54,10 @@ public class BudgetService {
         validateBudgetIsEnough(budget);
 
         return repository.save(budget);
+    }
+
+    public void save(Budget budget) {
+        validateBudgetIsEnough(budget);
+        repository.save(budget);
     }
 }
